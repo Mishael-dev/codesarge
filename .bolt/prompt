@@ -1,0 +1,121 @@
+For all designs I ask you to make, have them be beautiful, not cookie cutter. Make webpages that are fully featured and worthy for production.
+
+When using client-side hooks (useState and useEffect) in a component that's being treated as a Server Component by Next.js, always add the "use client" directive at the top of the file.
+
+Do not write code that will trigger this error: "Warning: Extra attributes from the server: %s%s""class,style"
+
+By default, this template supports JSX syntax with Tailwind CSS classes, the shadcn/ui library, React hooks, and Lucide React for icons. Do not install other packages for UI themes, icons, etc unless absolutely necessary or I request them.
+
+Use icons from lucide-react for logos.
+
+Use stock photos from unsplash where appropriate, only valid URLs you know exist.
+
+This is the database schema keep in mind when building UI components:
+Schema
+Users Table:
+id: A unique identifier (UUID) for each user (primary key).
+username: A unique username for the user (maximum 100 characters).
+email: A unique email address for the user (maximum 255 characters).
+password_hash: A hashed password for the user.
+role: The role of the user (e.g., "student" or "tutor") with a maximum of 50 characters.
+full_name: The full name of the user (maximum 255 characters).
+created_at: A timestamp indicating when the user record was created (default to the current timestamp).
+Programming_Languages Table:
+id: A unique identifier (UUID) for each programming language (primary key).
+language_name: The name of the programming language (maximum 100 characters).
+version: The version of the programming language (maximum 50 characters).
+syntax_support: A boolean indicating whether syntax highlighting is supported.
+file_extensions: A list of file extensions associated with the programming language.
+created_at: A timestamp indicating when the programming language record was created (default to the current timestamp).
+Exams Table:
+id: A unique identifier (UUID) for each exam (primary key).
+tutor_id: A foreign key referencing the id field in the Users table, linking the exam to the tutor.
+title: The title of the exam (maximum 255 characters).
+description: A detailed description of the exam.
+language_id: A foreign key referencing the id field in the Programming_Languages table, indicating the programming language used in the exam.
+total_score: The total score of the exam.
+duration: The duration of the exam in minutes.
+is_active: A boolean indicating whether the exam is active (default to true).
+created_at: A timestamp indicating when the exam record was created (default to the current timestamp).
+Questions Table:
+id: A unique identifier (UUID) for each question (primary key).
+exam_id: A foreign key referencing the id field in the Exams table, linking the question to the exam.
+question_text: The text of the question.
+description: Additional details or context for the question.
+points: The number of points awarded for correctly answering the question.
+language_id: A foreign key referencing the id field in the Programming_Languages table, indicating the programming language relevant to the question.
+created_at: A timestamp indicating when the question record was created (default to the current timestamp).
+Submissions Table:
+id: A unique identifier (UUID) for each submission (primary key).
+student_id: A text field to store an arbitrary identifier for the student (e.g., registration number).
+student_name: The full name of the student.
+student_email: The email address of the student.
+exam_id: A foreign key referencing the id field in the Exams table, linking the submission to the exam.
+created_at: A timestamp indicating when the submission was made (default to the current timestamp).
+Answers Table:
+id: A unique identifier (UUID) for each answer (primary key).
+submission_id: A foreign key referencing the id field in the Submissions table, linking the answer to a specific submission.
+question_id: A foreign key referencing the id field in the Questions table, linking the answer to a specific question.
+answer_text: The text of the student's answer (e.g., code or explanation).
+points_awarded: The number of points awarded for the answer.
+created_at: A timestamp indicating when the answer record was created (default to the current timestamp).
+
+This is the color scheme keep in mind when building UI components: 
+Color Scheme
+1. Base Colors
+Background: #FFFFFF (White)
+Primary Color: #111111 (Night Black)
+Secondary Color: #F4703A (Orange Crayola)
+2. Text Colors
+Primary Text: #111111 (Black) – for most text content.
+Secondary Text: #555555 (Gray) – for less important information (e.g., subtitles, descriptions).
+Muted Text: #888888 (Light Gray) – for placeholders or disabled text.
+Inverted Text: #FFFFFF (White) – for text on dark backgrounds (e.g., buttons or cards).
+3. Button Colors
+Primary Button:
+Background: #F4703A (Orange Crayola)
+Text: #FFFFFF (White)
+Hover: #D65E2F (Darker Orange)
+Secondary Button:
+Background: #FFFFFF (White)
+Border: #F4703A (Orange Crayola)
+Text: #F4703A (Orange Crayola)
+Hover: #FFF4F0 (Light Orange Tint)
+Disabled Button:
+Background: #E0E0E0 (Light Gray)
+Text: #A0A0A0 (Muted Gray)
+4. Border Colors
+Primary Border: #F4703A (Orange Crayola) – for buttons, input fields, and highlights.
+Neutral Border: #CCCCCC (Light Gray) – for dividers or subtle borders.
+5. Background Variants
+Card Background: #FAFAFA (Off-White) – for cards or containers.
+Highlight Background: #FFF4F0 (Light Orange Tint) – for highlighted elements.
+6. Alert & Feedback Colors
+Success:
+Background: #D4EDDA (Light Green)
+Border: #28A745 (Green)
+Text: #155724 (Dark Green)
+Error:
+Background: #F8D7DA (Light Red)
+Border: #DC3545 (Red)
+Text: #721C24 (Dark Red)
+Warning:
+Background: #FFF3CD (Light Yellow)
+Border: #FFC107 (Yellow)
+Text: #856404 (Dark Yellow)
+Info:
+Background: #D1ECF1 (Light Blue)
+Border: #17A2B8 (Blue)
+Text: #0C5460 (Dark Blue)
+7. Accent Colors
+Accent 1: #FFA500 (Bright Orange) – for highlights or call-to-action elements.
+Accent 2: #FFD700 (Gold) – for premium or special content.
+Accent 3: #1E90FF (Dodger Blue) – for links or additional accents.
+8. Input Fields
+Background: #FFFFFF (White)
+Border: #CCCCCC (Light Gray)
+Focus Border: #F4703A (Orange Crayola)
+Placeholder Text: #AAAAAA (Light Gray)
+9. Shadows
+Default Shadow: rgba(0, 0, 0, 0.1) – subtle shadow for elevation.
+Hover Shadow: rgba(0, 0, 0, 0.2) – slightly darker shadow for hover effects.
