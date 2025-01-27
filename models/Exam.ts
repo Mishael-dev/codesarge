@@ -1,4 +1,4 @@
-import { createClient } from "@/lib/supabase/browserClient";
+import { createClient } from "@/utils/supabase/client";
 import { Database } from "@/database.types";
 
 export interface ExamData {
